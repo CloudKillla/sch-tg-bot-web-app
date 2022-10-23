@@ -19,7 +19,7 @@ const App = () => {
 }
 
 const Layout = styled.div`
-  background: var(--tg-theme-secondary-bg-color);
+  background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
   height: 100vh;
   display: flex;
