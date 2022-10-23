@@ -10,7 +10,11 @@ const Header = () => {
 
     return (
         <PageHeader
-            title={telegram.initDataUnsafe.user.username}
+            style={{
+                height: "52px",
+                padding: "8px 24px",
+            }}
+            title={`@${telegram.initDataUnsafe.user.username}`}
             onBack={location.pathname.includes("test") ? () => navigate("/") : null}
             extra={<Avatar src="https://joeschmoe.io/api/v1/random"/>}
         />
