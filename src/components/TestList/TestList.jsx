@@ -3,18 +3,20 @@ import {List, Spin, Tag} from "antd";
 import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
+const {Item} = List;
+
 const TestList = () => {
     const navigate = useNavigate();
     const [tests, setTests] = useState([]);
 
-    const getTests = () => {
+    const appendTests = () => {
         fetch("/tests/tests.json")
             .then(res => res.json())
             .then(json => setTests(json));
     }
 
     useEffect(() => {
-        getTests();
+        appendTests();
     }, []);
 
     return tests.length ?
@@ -27,7 +29,7 @@ const TestList = () => {
             }
             renderItem={
                 test =>
-                    <List.Item
+                    <Item
                         key={test.id}
                         onClick={() => navigate(`/test/${test.id}`)}
                         style={{padding: "10px 15px"}}
@@ -37,7 +39,7 @@ const TestList = () => {
                             <Tag color="#F06964">{test.subject}</Tag>
                             <Tag color="#56B3F5">{test.questions.length} пытанняў</Tag>
                         </div>
-                    </List.Item>
+                    </Item>
             }
         />
         :
@@ -48,6 +50,7 @@ const StyledList = styled(List)`
   background: var(--tg-theme-bg-color);
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 `
 
 export default TestList;
