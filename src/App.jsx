@@ -24,7 +24,6 @@ const App = () => {
 
 const Layout = styled.div`
   background: var(--tg-theme-secondary-bg-color);
-  color: var(--tg-theme-text-color);
   height: calc(100vh - 52px);
   display: flex;
   justify-content: center;
