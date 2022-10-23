@@ -29,17 +29,16 @@ const TestList = () => {
             }
             renderItem={
                 test =>
-                    <Item
+                    <StyledItem
                         key={test.id}
                         onClick={() => navigate(`/test/${test.id}`)}
-                        style={{padding: "10px 15px"}}
                     >
                         <h3>{test.title}</h3>
                         <div style={{display: "flex"}}>
                             <Tag color="#F06964">{test.subject}</Tag>
                             <Tag color="#56B3F5">{test.questions.length} пытанняў</Tag>
                         </div>
-                    </Item>
+                    </StyledItem>
             }
         />
         :
@@ -51,6 +50,11 @@ const StyledList = styled(List)`
   width: 100%;
   height: 100%;
   border-radius: 5px;
+`
+
+const StyledItem= styled(Item)`
+  padding: 10px 15px;
+  cursor: pointer;
 `
 
 export default TestList;
