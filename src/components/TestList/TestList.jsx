@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {List, Spin, Tag} from "antd";
 import {useNavigate} from "react-router-dom";
+import styled from "styled-components";
 
 const TestList = () => {
     const navigate = useNavigate();
@@ -17,12 +18,8 @@ const TestList = () => {
     }, []);
 
     return tests.length ?
-        <List
+        <StyledList
             dataSource={tests}
-            style={{
-                width: "100%",
-                height: "100%",
-            }}
             header={
                 <div style={{padding: "0 15px"}}>
                     <h2>Спіс тэстаў</h2>
@@ -37,8 +34,8 @@ const TestList = () => {
                     >
                         <h3>{test.title}</h3>
                         <div style={{display: "flex"}}>
-                            <Tag color="magenta">{test.subject}</Tag>
-                            <Tag color="green">{test.questions.length} пытанняў</Tag>
+                            <Tag color="#F06964">{test.subject}</Tag>
+                            <Tag color="#56B3F5">{test.questions.length} пытанняў</Tag>
                         </div>
                     </List.Item>
             }
@@ -46,5 +43,11 @@ const TestList = () => {
         :
         <Spin/>
 };
+
+const StyledList = styled(List)`
+  background: var(--tg-theme-bg-color);
+  width: 100%;
+  height: 100%;
+`
 
 export default TestList;
