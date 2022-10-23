@@ -1,1 +1,9 @@
 @import '~antd/dist/antd.css';
+
+h2 {
+    margin-bottom: 0;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
