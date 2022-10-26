@@ -52,7 +52,7 @@ const StyledList = styled(List)`
   border-radius: 5px;
 `
 
-const StyledItem= styled(Item)`
+const StyledItem = styled(Item)`
   padding: 10px 15px;
   cursor: pointer;
 `

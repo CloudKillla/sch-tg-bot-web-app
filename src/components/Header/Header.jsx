@@ -7,11 +7,11 @@ import styled from "styled-components";
 const Header = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const {telegram} = useTelegram();
+    const {user} = useTelegram();
 
     return (
         <StyledHeader
-            title={`@${telegram.initDataUnsafe.user.username}`}
+            title={`@${user.username}`}
             onBack={location.pathname.includes("test") ? () => navigate("/") : null}
             extra={<Avatar src="https://joeschmoe.io/api/v1/random"/>}
         />

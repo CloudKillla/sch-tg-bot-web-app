@@ -11,3 +11,11 @@ h3 {
 .ant-tag {
     border-radius: 11px;
 }
+
+h4 {
+    margin: 10px 0 15px;
+}
+
+.ant-radio-wrapper {
+    margin: 5px 0;
+}

@@ -5,8 +5,11 @@ export function useTelegram() {
         telegram.close();
     }
 
+    const user = telegram.initDataUnsafe.user;
+
     return {
         telegram,
+        user,
         close,
     };
 }
