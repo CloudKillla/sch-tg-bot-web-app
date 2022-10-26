@@ -12,9 +12,10 @@ import {
 import {useTelegram} from "../../hooks/useTelegram";
 
 const {Group} = Radio;
+const token = "5772012816:AAHBxUmq1C3ywx34Un34IVSFHplc5w8DqBA";
 
 const Test = () => {
-    const {telegram, user} = useTelegram();
+    const {user} = useTelegram();
     const navigate = useNavigate();
     const {id} = useParams();
     const [test, setTest] = useState();
@@ -33,13 +34,19 @@ const Test = () => {
     }, []);
 
     const sendData = () => {
-        const data = {
-            surname: user.first_name,
-            name: user.second_name,
-            test: test.title,
-            rating,
-        };
-        telegram.sendData(JSON.stringify(data));
+        const text = `Фамилия: ${user.first_name}. Имя: ${user.second_name}. Тест: ${test.title}. Оценка: ${rating}.`;
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=572468923&text=${text}`)
+            .then(() => {
+                setCurrent(current + 1);
+                setAnswer(undefined);
+            })
+            .catch(() => {
+                notification.open({
+                    type: "error",
+                    message: "Памылка, паспрабуйце ящчэ раз",
+                    placement: "bottom",
+                });
+            });
     };
 
     const goToNextQuestion = () => {
@@ -49,9 +56,10 @@ const Test = () => {
             }
             if (current === test.questions.length - 1) {
                 sendData();
+            } else {
+                setCurrent(current + 1);
+                setAnswer(undefined);
             }
-            setCurrent(current + 1);
-            setAnswer(undefined);
         } else {
             notification.open({
                 type: "warning",
@@ -63,6 +71,7 @@ const Test = () => {
 
     return test ?
         <Container>
+            <input type="button" onClick={sendData}/>
             <Progress
                 percent={Math.round(current * 100 / test.questions.length)}
                 showInfo={false}
