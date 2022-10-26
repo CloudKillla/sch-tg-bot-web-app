@@ -33,8 +33,8 @@ const Test = () => {
         appendTest();
     }, []);
 
-    const sendData = () => {
-        const text = `Фамілія: ${user.second_name}. Імя: ${user.first_name}. Тэст: ${test.title}. Адзнака: ${rating}.`;
+    const sendData = (rate) => {
+        const text = `Фамілія: ${user.second_name}. Імя: ${user.first_name}. Тэст: ${test.title}. Адзнака: ${rate}.`;
         fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=572468923&text=${text}`)
             .then(() => {
                 setCurrent(current + 1);
@@ -55,7 +55,11 @@ const Test = () => {
                 setRating(rating + 1);
             }
             if (current === test.questions.length - 1) {
-                sendData();
+                if (answer === test.questions[current].answer) {
+                    sendData(rating + 1);
+                } else {
+                    sendData(rating);
+                }
             } else {
                 setCurrent(current + 1);
                 setAnswer(undefined);
