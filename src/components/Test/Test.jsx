@@ -34,7 +34,7 @@ const Test = () => {
     }, []);
 
     const sendData = () => {
-        const text = `Фамилия: ${user.first_name}. Имя: ${user.second_name}. Тест: ${test.title}. Оценка: ${rating}.`;
+        const text = `Фамілія: ${user.second_name}. Імя: ${user.first_name}. Тэст: ${test.title}. Адзнака: ${rating}.`;
         fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=572468923&text=${text}`)
             .then(() => {
                 setCurrent(current + 1);
@@ -71,7 +71,6 @@ const Test = () => {
 
     return test ?
         <Container>
-            <input type="button" onClick={sendData}/>
             <Progress
                 percent={Math.round(current * 100 / test.questions.length)}
                 showInfo={false}
