@@ -12,7 +12,7 @@ import {
 import {useTelegram} from "../../hooks/useTelegram";
 
 const {Group} = Radio;
-const token = "5772012816:AAHBxUmq1C3ywx34Un34IVSFHplc5w8DqBA";
+const token = "5721819580:AAFvjgjIhlhq5u_EyDVz9U11H67v86pPEWQ";
 
 const Test = () => {
     const {user} = useTelegram();
@@ -35,7 +35,7 @@ const Test = () => {
 
     const sendData = (rate) => {
         const text = `Фамілія: ${user.second_name}. Імя: ${user.first_name}. Тэст: ${test.title}. Адзнака: ${rate}.`;
-        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=572468923&text=${text}`)
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=1176570457&text=${text}`)
             .then(() => {
                 setCurrent(current + 1);
                 setAnswer(undefined);
