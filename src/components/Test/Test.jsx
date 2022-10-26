@@ -93,7 +93,7 @@ const Test = () => {
                     <Result
                         status="success"
                         title={`Ваша адзнака за пройдзены тэст: ${rating}`}
-                        extra={[<Button onClick={() => navigate("/")}>На галоўную</Button>]}
+                        extra={[<ExtraButton onClick={() => navigate("/")}>На галоўную</ExtraButton>]}
                     />
             }
             {
@@ -119,6 +119,12 @@ const StyledButton = styled(Button)`
   width: 100%;
   margin-top: 15px;
   background: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+`
+
+const ExtraButton = styled(Button)`
+  background: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
 `
 
 export default Test;
